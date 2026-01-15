@@ -1,0 +1,212 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0f0f0f;
+    overflow: hidden;
+    position: relative;
+}
+
+.background-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(120, 40, 200, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 100, 150, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(50, 150, 255, 0.15) 0%, transparent 50%);
+    z-index: 0;
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+}
+
+.calculator {
+    background: rgba(30, 30, 30, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    width: 360px;
+    max-width: 100%;
+}
+
+.display-container {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+    border-radius: 16px;
+    padding: 28px 24px;
+    margin-bottom: 20px;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.display {
+    font-size: 42px;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: right;
+    letter-spacing: 1px;
+    word-wrap: break-word;
+    word-break: break-all;
+    min-height: 50px;
+    line-height: 50px;
+}
+
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.btn {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    border: none;
+    border-radius: 14px;
+    padding: 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Number buttons */
+.btn-number {
+    background: linear-gradient(135deg, #404040 0%, #2d2d2d 100%);
+    color: #ffffff;
+}
+
+.btn-number:hover {
+    background: linear-gradient(135deg, #4a4a4a 0%, #373737 100%);
+}
+
+/* Operator buttons */
+.btn-operator {
+    background: linear-gradient(135deg, #ff9500 0%, #ff7b00 100%);
+    color: #ffffff;
+}
+
+.btn-operator:hover {
+    background: linear-gradient(135deg, #ffa520 0%, #ff8b10 100%);
+}
+
+/* Function buttons (C, ÷, ×, ←) */
+.btn-function {
+    background: linear-gradient(135deg, #505050 0%, #3d3d3d 100%);
+    color: #ffffff;
+}
+
+.btn-function:hover {
+    background: linear-gradient(135deg, #5a5a5a 0%, #474747 100%);
+}
+
+/* Equals button */
+.btn-equals {
+    background: linear-gradient(135deg, #34c759 0%, #2db34a 100%);
+    color: #ffffff;
+    grid-row: span 2;
+}
+
+.btn-equals:hover {
+    background: linear-gradient(135deg, #3ed563 0%, #37c154 100%);
+}
+
+/* Zero button (spans 2 columns) */
+.btn-zero {
+    grid-column: span 2;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .calculator {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .display {
+        font-size: 36px;
+    }
+
+    .btn {
+        font-size: 20px;
+        padding: 20px;
+    }
+
+    .buttons-grid {
+        gap: 10px;
+    }
+}
+
+/* Keyboard press animation */
+@keyframes keyPress {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.95);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.btn.pressed {
+    animation: keyPress 0.2s ease;
+}
