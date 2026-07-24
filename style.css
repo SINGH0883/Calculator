@@ -62,6 +62,7 @@ body {
     opacity: 0.45;
     pointer-events: none;
     animation: orbFloat 22s ease-in-out infinite alternate;
+    z-index: 0;
 }
 
 .orb-1 {
@@ -95,6 +96,58 @@ body {
     0% { transform: translate(0, 0) scale(1); }
     50% { transform: translate(60px, -60px) scale(1.12); }
     100% { transform: translate(-50px, 50px) scale(0.92); }
+}
+
+/* Background Marquee Text Styling */
+.bg-marquee-container {
+    position: fixed;
+    left: 0;
+    width: 100vw;
+    overflow: hidden;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.08;
+    mix-blend-mode: overlay;
+}
+
+.track-top {
+    top: 10%;
+    transform: rotate(-3deg);
+}
+
+.track-bottom {
+    bottom: 8%;
+    transform: rotate(3deg);
+}
+
+.bg-marquee-content {
+    display: inline-flex;
+    font-family: 'Outfit', sans-serif;
+    font-size: 96px;
+    font-weight: 900;
+    letter-spacing: 10px;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+}
+
+.marquee-left {
+    animation: marqueeLeft 35s linear infinite;
+}
+
+.marquee-right {
+    animation: marqueeRight 40s linear infinite;
+}
+
+@keyframes marqueeLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes marqueeRight {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
 }
 
 /* Wide Container */
@@ -439,5 +492,9 @@ body {
     .btn-eq-tall {
         grid-row: span 1;
         height: 48px;
+    }
+
+    .bg-marquee-content {
+        font-size: 56px;
     }
 }
