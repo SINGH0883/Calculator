@@ -7,19 +7,19 @@
   </p>
 
   <p align="center">
-    <a href="https://singh0883.github.io/Calculator/">
+    <a href="https://singh0883.github.io/NeoCalc_Pro/">
       <img src="https://img.shields.io/badge/Live_Demo-🚀-38bdf8?style=for-the-badge&logo=githubpages&logoColor=white" alt="Live Demo">
     </a>
-    <a href="https://github.com/Singh0883/Calculator">
+    <a href="https://github.com/Singh0883/NeoCalc_Pro">
       <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
     </a>
-    <a href="https://github.com/Singh0883/Calculator">
+    <a href="https://github.com/Singh0883/NeoCalc_Pro">
       <img src="https://img.shields.io/badge/CSS3-Glassmorphism-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
     </a>
-    <a href="https://github.com/Singh0883/Calculator">
+    <a href="https://github.com/Singh0883/NeoCalc_Pro">
       <img src="https://img.shields.io/badge/JavaScript-Scientific_Engine-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
     </a>
-    <a href="https://github.com/Singh0883/Calculator/blob/main/LICENSE">
+    <a href="https://github.com/Singh0883/NeoCalc_Pro/blob/main/LICENSE">
       <img src="https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge" alt="License">
     </a>
   </p>
@@ -64,7 +64,7 @@
 ## 🚀 Live Demo
 
 Try out the live Scientific Calculator hosted on GitHub Pages:  
-🔗 **[https://singh0883.github.io/Calculator/](https://singh0883.github.io/Calculator/)**
+🔗 **[https://singh0883.github.io/NeoCalc_Pro/](https://singh0883.github.io/NeoCalc_Pro/)**
 
 ---
 
