@@ -1,8 +1,9 @@
 :root {
     --bg-dark: #07090e;
-    --card-bg: rgba(15, 18, 28, 0.82);
+    --card-bg: rgba(15, 18, 28, 0.84);
     --card-border: rgba(255, 255, 255, 0.12);
-    --display-bg: rgba(8, 10, 16, 0.9);
+    --panel-bg: rgba(10, 14, 23, 0.5);
+    --display-bg: rgba(8, 10, 16, 0.92);
     
     --text-primary: #ffffff;
     --text-secondary: #94a3b8;
@@ -18,12 +19,12 @@
     --btn-num-bg: rgba(30, 41, 59, 0.65);
     --btn-num-hover: rgba(51, 65, 85, 0.9);
     
-    --btn-sci-bg: rgba(24, 34, 53, 0.7);
+    --btn-sci-bg: rgba(24, 34, 53, 0.75);
     --btn-sci-hover: rgba(43, 58, 88, 0.95);
     --btn-sci-color: #38bdf8;
     
-    --btn-func-bg: rgba(47, 52, 77, 0.7);
-    --btn-func-hover: rgba(71, 85, 105, 0.9);
+    --btn-func-bg: rgba(47, 52, 77, 0.75);
+    --btn-func-hover: rgba(71, 85, 105, 0.95);
     
     --btn-op-bg: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
     --btn-op-hover: linear-gradient(135deg, #fbbf24 0%, #b45309 100%);
@@ -50,39 +51,39 @@ body {
     overflow-x: hidden;
     position: relative;
     color: var(--text-primary);
-    padding: 20px 10px;
+    padding: 20px;
 }
 
 /* Ambient Floating Orbs Background */
 .ambient-orb {
     position: absolute;
     border-radius: 50%;
-    filter: blur(100px);
+    filter: blur(110px);
     opacity: 0.45;
     pointer-events: none;
     animation: orbFloat 22s ease-in-out infinite alternate;
 }
 
 .orb-1 {
-    width: 450px;
-    height: 450px;
+    width: 500px;
+    height: 500px;
     background: radial-gradient(circle, rgba(56, 189, 248, 0.5) 0%, transparent 70%);
-    top: -120px;
-    left: -120px;
+    top: -150px;
+    left: -100px;
 }
 
 .orb-2 {
-    width: 500px;
-    height: 500px;
+    width: 550px;
+    height: 550px;
     background: radial-gradient(circle, rgba(192, 132, 252, 0.5) 0%, transparent 70%);
-    bottom: -160px;
-    right: -120px;
+    bottom: -180px;
+    right: -100px;
     animation-delay: -7s;
 }
 
 .orb-3 {
-    width: 380px;
-    height: 380px;
+    width: 400px;
+    height: 400px;
     background: radial-gradient(circle, rgba(244, 63, 94, 0.35) 0%, transparent 70%);
     top: 50%;
     left: 50%;
@@ -92,34 +93,34 @@ body {
 
 @keyframes orbFloat {
     0% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(50px, -70px) scale(1.12); }
-    100% { transform: translate(-40px, 60px) scale(0.92); }
+    50% { transform: translate(60px, -60px) scale(1.12); }
+    100% { transform: translate(-50px, 50px) scale(0.92); }
 }
 
-/* Main Container */
-.container {
+/* Wide Container */
+.wide-container {
     position: relative;
     z-index: 10;
     width: 100%;
-    max-width: 520px;
+    max-width: 880px;
 }
 
-/* Glassmorphic Calculator Card */
-.calculator {
+/* Wide Glassmorphic Calculator Card */
+.wide-calculator {
     background: var(--card-bg);
     backdrop-filter: blur(30px) saturate(190%);
     -webkit-backdrop-filter: blur(30px) saturate(190%);
     border: 1px solid var(--card-border);
     border-radius: 32px;
-    padding: 26px;
-    box-shadow: 0 35px 90px rgba(0, 0, 0, 0.7),
+    padding: 24px 28px;
+    box-shadow: 0 35px 95px rgba(0, 0, 0, 0.75),
                 0 0 50px rgba(56, 189, 248, 0.1),
                 inset 0 1px 0 rgba(255, 255, 255, 0.18);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.calculator:hover {
-    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8),
+.wide-calculator:hover {
+    box-shadow: 0 40px 105px rgba(0, 0, 0, 0.85),
                 0 0 60px rgba(192, 132, 252, 0.15),
                 inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
@@ -129,8 +130,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 18px;
-    padding: 0 2px;
+    margin-bottom: 16px;
+    padding: 0 4px;
 }
 
 .brand {
@@ -171,7 +172,7 @@ body {
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 1px;
-    padding: 4px 10px;
+    padding: 4px 12px;
     border-radius: 14px;
     background: rgba(255, 255, 255, 0.06);
     color: var(--text-secondary);
@@ -213,11 +214,11 @@ body {
     box-shadow: 0 0 8px rgba(16, 185, 129, 0.3);
 }
 
-/* Dual-Row Display Box */
+/* Full-Width Display Box */
 .display-container {
     background: var(--display-bg);
     border-radius: 20px;
-    padding: 18px 22px;
+    padding: 16px 24px;
     margin-bottom: 20px;
     border: 1px solid rgba(255, 255, 255, 0.07);
     box-shadow: inset 0 3px 14px rgba(0, 0, 0, 0.65),
@@ -226,7 +227,7 @@ body {
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
-    min-height: 115px;
+    min-height: 100px;
     word-break: break-all;
     overflow: hidden;
 }
@@ -245,7 +246,7 @@ body {
 
 .display {
     font-family: 'Fira Code', monospace;
-    font-size: 36px;
+    font-size: 38px;
     font-weight: 600;
     color: var(--text-primary);
     line-height: 44px;
@@ -254,21 +255,59 @@ body {
     transition: font-size 0.15s ease;
 }
 
-/* Scientific Grid (5 Columns) */
-.scientific-grid {
+/* Widescreen 2-Panel Layout */
+.keypad-panels {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+}
+
+.panel {
+    background: var(--panel-bg);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 22px;
+    padding: 14px;
+}
+
+.panel-scientific {
+    flex: 1.25;
+}
+
+.panel-basic {
+    flex: 1;
+}
+
+.panel-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    padding-left: 4px;
+}
+
+/* Left Grid (5 Cols x 4 Rows) */
+.grid-sci {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
+    gap: 9px;
+}
+
+/* Right Grid (4 Cols x 5 Rows) */
+.grid-basic {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 9px;
 }
 
 /* Button Base Styling */
 .btn {
     font-family: 'Outfit', sans-serif;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 500;
-    height: 52px;
+    height: 48px;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
+    border-radius: 14px;
     cursor: pointer;
     transition: all 0.16s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
@@ -291,11 +330,11 @@ body {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* Scientific Buttons (sin, cos, tan, log, ln, sqrt, etc.) */
+/* Scientific Buttons */
 .btn-sci {
     background: var(--btn-sci-bg);
     color: var(--btn-sci-color);
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
 }
 
@@ -309,7 +348,7 @@ body {
 .btn-number {
     background: var(--btn-num-bg);
     color: var(--text-primary);
-    font-size: 19px;
+    font-size: 18px;
     font-weight: 600;
 }
 
@@ -318,12 +357,12 @@ body {
     color: #ffffff;
 }
 
-/* Function Buttons (AC, ±, %, ←) */
+/* Function Buttons (AC, ←) */
 .btn-function {
     background: var(--btn-func-bg);
     color: var(--accent-purple);
     font-weight: 600;
-    font-size: 17px;
+    font-size: 16px;
 }
 
 .btn-function:hover {
@@ -335,7 +374,7 @@ body {
 .btn-operator {
     background: var(--btn-op-bg);
     color: #ffffff;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 600;
     box-shadow: 0 3px 12px rgba(245, 158, 11, 0.35);
 }
@@ -345,13 +384,18 @@ body {
     box-shadow: 0 5px 18px rgba(245, 158, 11, 0.5);
 }
 
-/* Equals Button (=) */
+/* Equals Button (=) Tall Span */
 .btn-equals {
     background: var(--btn-eq-bg);
     color: #ffffff;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 600;
     box-shadow: 0 3px 15px rgba(56, 189, 248, 0.4);
+}
+
+.btn-eq-tall {
+    grid-row: span 2;
+    height: 100%;
 }
 
 .btn-equals:hover {
@@ -359,17 +403,11 @@ body {
     box-shadow: 0 5px 22px rgba(56, 189, 248, 0.6);
 }
 
-/* Equals Span & Zero Spans */
-.btn-zero {
+/* Zero Button Span 2 Cols */
+.btn-zero-wide {
     grid-column: span 2;
     justify-content: flex-start;
-    padding-left: 24px;
-    border-radius: 16px;
-}
-
-.btn-eq-span {
-    grid-column: span 2;
-    border-radius: 16px;
+    padding-left: 20px;
 }
 
 /* Keypress Animation */
@@ -383,36 +421,23 @@ body {
     100% { transform: scale(1); }
 }
 
-/* Responsive Mobile Layout */
-@media (max-width: 480px) {
-    .calculator {
-        padding: 18px 14px;
-        border-radius: 24px;
+/* Responsive Fallback for Narrow Screens */
+@media (max-width: 768px) {
+    .keypad-panels {
+        flex-direction: column;
     }
 
-    .display {
-        font-size: 30px;
-    }
-
-    .sub-display {
-        font-size: 13px;
+    .wide-calculator {
+        max-width: 480px;
+        margin: 0 auto;
     }
 
     .btn {
-        height: 46px;
-        font-size: 14px;
-        border-radius: 12px;
+        height: 48px;
     }
 
-    .btn-sci {
-        font-size: 13px;
-    }
-
-    .btn-number {
-        font-size: 16px;
-    }
-
-    .scientific-grid {
-        gap: 6px;
+    .btn-eq-tall {
+        grid-row: span 1;
+        height: 48px;
     }
 }
