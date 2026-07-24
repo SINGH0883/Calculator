@@ -1,6 +1,8 @@
 class Calculator {
     constructor() {
         this.displayElement = document.getElementById('display');
+        this.subDisplayElement = document.getElementById('subDisplay');
+        
         this.currentValue = '0';
         this.previousValue = '';
         this.operation = null;
@@ -57,7 +59,11 @@ class Calculator {
                 this.animateButton('[data-action="divide"]');
             }
 
-            // Decimal
+            // Utility Keys
+            if (e.key === '%') {
+                this.handleAction('percent');
+                this.animateButton('[data-action="percent"]');
+            }
             if (e.key === '.') {
                 this.handleAction('decimal');
                 this.animateButton('[data-action="decimal"]');
@@ -79,7 +85,6 @@ class Calculator {
             // Backspace
             if (e.key === 'Backspace') {
                 this.handleAction('backspace');
-                this.animateButton('[data-action="backspace"]');
             }
         });
     }
@@ -114,6 +119,12 @@ class Calculator {
             case 'backspace':
                 this.backspace();
                 break;
+            case 'negate':
+                this.negate();
+                break;
+            case 'percent':
+                this.percent();
+                break;
             case 'decimal':
                 this.addDecimal();
                 break;
@@ -140,15 +151,34 @@ class Calculator {
         this.previousValue = '';
         this.operation = null;
         this.shouldResetDisplay = false;
+        if (this.subDisplayElement) this.subDisplayElement.textContent = '';
         this.updateDisplay();
     }
 
     backspace() {
+        if (this.shouldResetDisplay) return;
         if (this.currentValue.length > 1) {
             this.currentValue = this.currentValue.slice(0, -1);
         } else {
             this.currentValue = '0';
         }
+        this.updateDisplay();
+    }
+
+    negate() {
+        if (this.currentValue === '0') return;
+        if (this.currentValue.startsWith('-')) {
+            this.currentValue = this.currentValue.slice(1);
+        } else {
+            this.currentValue = '-' + this.currentValue;
+        }
+        this.updateDisplay();
+    }
+
+    percent() {
+        const val = parseFloat(this.currentValue);
+        if (isNaN(val)) return;
+        this.currentValue = (val / 100).toString();
         this.updateDisplay();
     }
 
@@ -164,14 +194,18 @@ class Calculator {
 
     setOperation(op) {
         if (this.operation !== null && !this.shouldResetDisplay) {
-            this.calculate();
+            this.calculate(false);
         }
         this.operation = op;
         this.previousValue = this.currentValue;
         this.shouldResetDisplay = true;
+
+        if (this.subDisplayElement) {
+            this.subDisplayElement.textContent = `${this.previousValue} ${this.operation}`;
+        }
     }
 
-    calculate() {
+    calculate(finalCalculation = true) {
         if (this.operation === null || this.shouldResetDisplay) {
             return;
         }
@@ -197,7 +231,7 @@ class Calculator {
                 break;
             case '÷':
                 if (current === 0) {
-                    this.showError('Cannot divide by zero');
+                    this.showError('Error');
                     return;
                 }
                 result = prev / current;
@@ -206,37 +240,42 @@ class Calculator {
                 return;
         }
 
-        // Format result
-        if (result % 1 === 0) {
+        // Format result cleanly
+        if (Number.isInteger(result)) {
             this.currentValue = result.toString();
         } else {
-            this.currentValue = result.toFixed(8).replace(/\.?0+$/, '');
+            this.currentValue = parseFloat(result.toFixed(8)).toString();
         }
 
-        this.operation = null;
-        this.previousValue = '';
+        if (finalCalculation && this.subDisplayElement) {
+            this.subDisplayElement.textContent = `${prev} ${this.operation} ${current} =`;
+            this.operation = null;
+            this.previousValue = '';
+        }
+
         this.shouldResetDisplay = true;
         this.updateDisplay();
     }
 
     showError(message) {
-        this.displayElement.textContent = 'Error';
+        this.displayElement.textContent = message;
+        if (this.subDisplayElement) this.subDisplayElement.textContent = '';
         setTimeout(() => {
             this.clear();
         }, 1500);
     }
 
     updateDisplay() {
-        // Limit display length
         let displayValue = this.currentValue;
         if (displayValue.length > 12) {
-            displayValue = parseFloat(displayValue).toExponential(6);
+            const num = parseFloat(displayValue);
+            displayValue = isNaN(num) ? displayValue : num.toExponential(5);
         }
         this.displayElement.textContent = displayValue;
     }
 }
 
-// Initialize calculator when DOM is loaded
+// Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     new Calculator();
 });
