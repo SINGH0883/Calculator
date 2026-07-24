@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeoCalc — Futuristic Glassmorphic Calculator</title>
+    <title>NeoCalc Pro — Scientific & Graphical Calculator</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,14 +18,18 @@
     <div class="ambient-orb orb-3"></div>
 
     <div class="container">
-        <div class="calculator">
+        <div class="calculator scientific-calculator">
             <!-- Header Bar -->
             <div class="calc-header">
                 <div class="brand">
                     <span class="brand-dot"></span>
-                    <span class="brand-name">NEO CALC</span>
+                    <span class="brand-name">NEO SCIENTIFIC</span>
                 </div>
-                <div class="accent-badge">v2.0</div>
+                <div class="header-controls">
+                    <button class="mode-btn" id="angleModeBtn" title="Toggle Angle Mode (Deg/Rad)">DEG</button>
+                    <button class="mode-btn" id="secondFuncBtn" title="Toggle Inverse / 2nd Functions">2nd</button>
+                    <div class="accent-badge" id="memoryIndicator">M</div>
+                </div>
             </div>
 
             <!-- Dual-Row Display -->
@@ -34,36 +38,61 @@
                 <div class="display" id="display">0</div>
             </div>
 
-            <!-- Buttons Grid -->
-            <div class="buttons-grid">
-                <!-- Row 1: Utility Functions -->
+            <!-- Scientific Buttons Grid -->
+            <div class="buttons-grid scientific-grid">
+                <!-- Row 1: Memory & Parentheses -->
+                <button class="btn btn-sci" data-action="mc">MC</button>
+                <button class="btn btn-sci" data-action="mr">MR</button>
+                <button class="btn btn-sci" data-action="m-plus">M+</button>
+                <button class="btn btn-sci" data-action="m-minus">M-</button>
                 <button class="btn btn-function" data-action="clear">AC</button>
-                <button class="btn btn-function" data-action="negate">±</button>
-                <button class="btn btn-function" data-action="percent">%</button>
+
+                <!-- Row 2: Advanced Functions 1 -->
+                <button class="btn btn-sci" data-func="sin" id="btnSin">sin</button>
+                <button class="btn btn-sci" data-func="cos" id="btnCos">cos</button>
+                <button class="btn btn-sci" data-func="tan" id="btnTan">tan</button>
+                <button class="btn btn-sci" data-action="lparen">(</button>
+                <button class="btn btn-sci" data-action="rparen">)</button>
+
+                <!-- Row 3: Advanced Functions 2 -->
+                <button class="btn btn-sci" data-func="ln" id="btnLn">ln</button>
+                <button class="btn btn-sci" data-func="log" id="btnLog">log</button>
+                <button class="btn btn-sci" data-func="sqrt" id="btnSqrt">√</button>
+                <button class="btn btn-sci" data-func="pow" id="btnPow">x^y</button>
                 <button class="btn btn-operator" data-action="divide">÷</button>
 
-                <!-- Row 2 -->
+                <!-- Row 4: Constants & Powers -->
+                <button class="btn btn-sci" data-action="pi">π</button>
+                <button class="btn btn-sci" data-action="e">e</button>
+                <button class="btn btn-sci" data-func="sqr" id="btnSqr">x²</button>
+                <button class="btn btn-sci" data-func="factorial">n!</button>
+                <button class="btn btn-operator" data-action="multiply">×</button>
+
+                <!-- Row 5: Numbers Row 7-9 -->
                 <button class="btn btn-number" data-number="7">7</button>
                 <button class="btn btn-number" data-number="8">8</button>
                 <button class="btn btn-number" data-number="9">9</button>
-                <button class="btn btn-operator" data-action="multiply">×</button>
+                <button class="btn btn-sci" data-action="reciprocal">1/x</button>
+                <button class="btn btn-operator" data-action="subtract">−</button>
 
-                <!-- Row 3 -->
+                <!-- Row 6: Numbers Row 4-6 -->
                 <button class="btn btn-number" data-number="4">4</button>
                 <button class="btn btn-number" data-number="5">5</button>
                 <button class="btn btn-number" data-number="6">6</button>
-                <button class="btn btn-operator" data-action="subtract">−</button>
+                <button class="btn btn-function" data-action="percent">%</button>
+                <button class="btn btn-operator" data-action="add">+</button>
 
-                <!-- Row 4 -->
+                <!-- Row 7: Numbers Row 1-3 & Utilities -->
                 <button class="btn btn-number" data-number="1">1</button>
                 <button class="btn btn-number" data-number="2">2</button>
                 <button class="btn btn-number" data-number="3">3</button>
-                <button class="btn btn-operator" data-action="add">+</button>
+                <button class="btn btn-function" data-action="negate">±</button>
+                <button class="btn btn-function" data-action="backspace">←</button>
 
-                <!-- Row 5 -->
+                <!-- Row 8: Bottom Row (Zero, Decimal, Equals) -->
                 <button class="btn btn-number btn-zero" data-number="0">0</button>
                 <button class="btn btn-number" data-action="decimal">.</button>
-                <button class="btn btn-equals" data-action="equals">=</button>
+                <button class="btn btn-equals btn-eq-span" data-action="equals">=</button>
             </div>
         </div>
     </div>
