@@ -114,38 +114,44 @@ body {
     overflow: hidden;
     white-space: nowrap;
     pointer-events: none;
-    z-index: 1;
-    opacity: 0.08;
-    mix-blend-mode: overlay;
+    z-index: 2;
+    opacity: 0.35;
 }
 
 .track-top {
-    top: 8%;
+    top: 4%;
     transform: rotate(-3deg);
 }
 
 .track-bottom {
-    bottom: 6%;
+    bottom: 4%;
     transform: rotate(3deg);
 }
 
 .bg-marquee-content {
     display: inline-flex;
     font-family: 'Outfit', sans-serif;
-    font-size: 84px;
+    font-size: 76px;
     font-weight: 900;
-    letter-spacing: 10px;
-    color: transparent;
-    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.9);
+    letter-spacing: 8px;
+    color: rgba(56, 189, 248, 0.15);
+    -webkit-text-stroke: 1.5px rgba(56, 189, 248, 0.5);
+    text-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
     text-transform: uppercase;
 }
 
+.track-bottom .bg-marquee-content {
+    color: rgba(192, 132, 252, 0.15);
+    -webkit-text-stroke: 1.5px rgba(192, 132, 252, 0.5);
+    text-shadow: 0 0 15px rgba(192, 132, 252, 0.25);
+}
+
 .marquee-left {
-    animation: marqueeLeft 35s linear infinite;
+    animation: marqueeLeft 30s linear infinite;
 }
 
 .marquee-right {
-    animation: marqueeRight 40s linear infinite;
+    animation: marqueeRight 35s linear infinite;
 }
 
 @keyframes marqueeLeft {
@@ -516,6 +522,6 @@ body {
     }
 
     .bg-marquee-content {
-        font-size: 52px;
+        font-size: 48px;
     }
 }
